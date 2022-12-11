@@ -36,3 +36,4 @@ lerna-debug.log*
 
 # others
 schema.prisma.txt
+.env
