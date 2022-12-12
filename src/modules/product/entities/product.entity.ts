@@ -1,5 +1,3 @@
-import { Category } from 'src/modules/category/entities/category.entity';
-
 export class Product {
   id?: number;
   name: string;
@@ -7,7 +5,7 @@ export class Product {
   description: string;
   image: string;
   slug: string;
-  invetory: number;
+  inventory: number;
   discount?: number;
-  category: Category[];
+  categories: number[];
 }

@@ -1,5 +1,4 @@
 import { IsArray, IsNotEmpty, IsNumber, IsString } from 'class-validator';
-import { Category } from '../../category/entities/category.entity';
 import { Product } from '../entities/product.entity';
 
 export class CreateProductDto extends Product {
@@ -32,5 +31,5 @@ export class CreateProductDto extends Product {
 
   @IsNotEmpty()
   @IsArray()
-  categories: Category[];
+  categories: number[];
 }
