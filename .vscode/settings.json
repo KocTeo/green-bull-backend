@@ -1,7 +1,3 @@
 {
-  "conventionalCommits.scopes": [
-    "User",
-    "Prisma",
-    "Auth"
-  ]
+  "conventionalCommits.scopes": ["User", "Prisma", "Auth", "Category"]
 }
