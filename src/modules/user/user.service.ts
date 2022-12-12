@@ -23,18 +23,33 @@ export class UserService {
   }
 
   findAll() {
-    return this.prisma.user.findMany();
+    return this.prisma.user.findMany({
+      select: {
+        email: true,
+        id: true,
+        name: true,
+      },
+    });
   }
 
-  findByEmail(email: string) {
-    return this.prisma.user.findUnique({ where: { email } });
+  async findByEmail(email: string) {
+    const user = await this.prisma.user.findUnique({ where: { email } });
+    return {
+      ...user,
+      password: undefined,
+    };
   }
 
-  update(id: number, updateUserDto: UpdateUserDto) {
-    return this.prisma.user.update({
+  async update(id: number, updateUserDto: UpdateUserDto) {
+    const updatedUser = await this.prisma.user.update({
       where: { id },
       data: updateUserDto,
     });
+
+    return {
+      ...updatedUser,
+      password: undefined,
+    };
   }
 
   remove(id: number) {
