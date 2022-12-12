@@ -38,8 +38,27 @@ model Category_Products {
 }
 
 model Product {
-  id         Int                 @id @default(autoincrement())
-  categories Category_Products[]
+  id           Int                 @id @default(autoincrement())
+  name         String
+  price        Float
+  description  String
+  image        String
+  slug         String              @unique
+  inventory    Int
+  discount     Float               @default(0)
+  sale_product Sale_Product[]
+  categories   Category_Products[]
+}
+
+model Sale_Product {
+  sale_id    Int
+  product_id Int
+  quantity   Int
+
+  sale    Sale    @relation(fields: [sale_id], references: [id])
+  product Product @relation(fields: [product_id], references: [id])
+
+  @@id([sale_id, product_id])
 }
 
 model Address {
@@ -74,6 +93,7 @@ model Payment_Sale {
 }
 
 model Sale {
-  id   Int            @id @default(autoincrement())
-  sale Payment_Sale[]
+  id           Int            @id @default(autoincrement())
+  sale_product Sale_Product[]
+  payment_sale Payment_Sale[]
 }

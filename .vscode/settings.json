@@ -5,6 +5,7 @@
     "Auth",
     "Category",
     "Address",
-    "Payment"
+    "Payment",
+    "Product"
   ]
 }
