@@ -6,6 +6,7 @@
     "Category",
     "Address",
     "Payment",
-    "Product"
+    "Product",
+    "Sale"
   ]
 }

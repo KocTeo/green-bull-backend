@@ -9,6 +9,7 @@ import { CategoryModule } from './modules/category/category.module';
 import { AddressModule } from './modules/address/address.module';
 import { PaymentModule } from './modules/payment/payment.module';
 import { ProductModule } from './modules/product/product.module';
+import { SaleModule } from './modules/sale/sale.module';
 
 @Module({
   imports: [
@@ -18,6 +19,7 @@ import { ProductModule } from './modules/product/product.module';
     AddressModule,
     PaymentModule,
     ProductModule,
+    SaleModule,
   ],
   controllers: [AppController],
   providers: [AppService, { provide: APP_GUARD, useClass: JwtAuthGuard }],
