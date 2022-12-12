@@ -1,1 +1,4 @@
-export class Payment {}
+export class Payment {
+  id?: number;
+  type: string;
+}
