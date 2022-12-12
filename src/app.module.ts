@@ -7,9 +7,16 @@ import { JwtAuthGuard } from './modules/auth/guards/jwt-auth.guard';
 import { UserModule } from './modules/user/user.module';
 import { CategoryModule } from './modules/category/category.module';
 import { AddressModule } from './modules/address/address.module';
+import { PaymentModule } from './modules/payment/payment.module';
 
 @Module({
-  imports: [UserModule, AuthModule, CategoryModule, AddressModule],
+  imports: [
+    UserModule,
+    AuthModule,
+    CategoryModule,
+    AddressModule,
+    PaymentModule,
+  ],
   controllers: [AppController],
   providers: [AppService, { provide: APP_GUARD, useClass: JwtAuthGuard }],
 })

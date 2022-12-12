@@ -4,6 +4,7 @@
     "Prisma",
     "Auth",
     "Category",
-    "Address"
+    "Address",
+    "Payment"
   ]
 }
