@@ -18,3 +18,25 @@ model User {
 
   name String
 }
+
+model Category {
+  id Int @id @default(autoincrement())
+
+  name              String
+  Category_Products Category_Products[]
+}
+
+model Category_Products {
+  category_id Int
+  product_id  Int
+
+  category Category @relation(fields: [category_id], references: [id])
+  product  Product  @relation(fields: [product_id], references: [id])
+
+  @@id([category_id, product_id])
+}
+
+model Product {
+  id         Int                 @id @default(autoincrement())
+  categories Category_Products[]
+}
