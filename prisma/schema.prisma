@@ -16,7 +16,8 @@ model User {
   email    String @unique
   password String
 
-  name String
+  name    String
+  Address Address[]
 }
 
 model Category {
@@ -39,4 +40,19 @@ model Category_Products {
 model Product {
   id         Int                 @id @default(autoincrement())
   categories Category_Products[]
+}
+
+model Address {
+  id Int @id @default(autoincrement())
+
+  street     String
+  number     String
+  city       String
+  state      String
+  country    String
+  zip        String
+  complement String
+
+  user_id Int
+  user    User @relation(fields: [user_id], references: [id])
 }
