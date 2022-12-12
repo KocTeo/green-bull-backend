@@ -7,6 +7,7 @@ import {
   Patch,
   Post,
 } from '@nestjs/common';
+import { IsPublic } from '../auth/decorators/is-public.decorator';
 import { CategoryService } from './category.service';
 import { CreateCategoryDto } from './dto/create-category.dto';
 import { UpdateCategoryDto } from './dto/update-category.dto';
@@ -20,6 +21,7 @@ export class CategoryController {
     return this.categoryService.create(createCategoryDto);
   }
 
+  @IsPublic()
   @Get()
   findAll() {
     return this.categoryService.findAll();
