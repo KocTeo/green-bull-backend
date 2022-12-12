@@ -6,6 +6,7 @@ import {
   Param,
   Patch,
   Post,
+  Request,
 } from '@nestjs/common';
 import { AddressService } from './address.service';
 import { CreateAddressDto } from './dto/create-address.dto';
@@ -21,18 +22,17 @@ export class AddressController {
   }
 
   @Get()
-  findAll() {
-    return this.addressService.findAll();
-  }
-
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.addressService.findOne(+id);
+  findAll(@Request() req) {
+    return this.addressService.findAll(req.user);
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateAddressDto: UpdateAddressDto) {
-    return this.addressService.update(+id, updateAddressDto);
+  update(
+    @Param('id') id: string,
+    @Body() updateAddressDto: UpdateAddressDto,
+    @Request() req,
+  ) {
+    return this.addressService.update(+id, updateAddressDto, req.user);
   }
 
   @Delete(':id')
