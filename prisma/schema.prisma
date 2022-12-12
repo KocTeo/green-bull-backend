@@ -56,3 +56,24 @@ model Address {
   user_id Int
   user    User @relation(fields: [user_id], references: [id])
 }
+
+model Payment {
+  id           Int            @id @default(autoincrement())
+  type         String
+  Payment_Sale Payment_Sale[]
+}
+
+model Payment_Sale {
+  sale_id    Int
+  payment_id Int
+
+  sale    Sale    @relation(fields: [sale_id], references: [id])
+  payment Payment @relation(fields: [payment_id], references: [id])
+
+  @@id([sale_id, payment_id])
+}
+
+model Sale {
+  id   Int            @id @default(autoincrement())
+  sale Payment_Sale[]
+}
