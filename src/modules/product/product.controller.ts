@@ -28,6 +28,12 @@ export class ProductController {
   }
 
   @IsPublic()
+  @Get('/category/:id')
+  findByCategory(@Param('id') id: string) {
+    return this.productService.findByCategory(+id);
+  }
+
+  @IsPublic()
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.productService.findOne(+id);
