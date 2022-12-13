@@ -18,6 +18,7 @@ model User {
 
   name    String
   Address Address[]
+  Sale    Sale[]
 }
 
 model Category {
@@ -73,27 +74,23 @@ model Address {
   complement String
 
   user_id Int
-  user    User @relation(fields: [user_id], references: [id])
-}
-
-model Payment {
-  id           Int            @id @default(autoincrement())
-  type         String         @unique
-  Payment_Sale Payment_Sale[]
-}
-
-model Payment_Sale {
-  sale_id    Int
-  payment_id Int
-
-  sale    Sale    @relation(fields: [sale_id], references: [id])
-  payment Payment @relation(fields: [payment_id], references: [id])
-
-  @@id([sale_id, payment_id])
+  user    User   @relation(fields: [user_id], references: [id])
+  Sale    Sale[]
 }
 
 model Sale {
-  id           Int            @id @default(autoincrement())
+  id Int @id @default(autoincrement())
+
+  user_id Int
+  user    User @relation(fields: [user_id], references: [id])
+
+  address_id Int
+  address    Address @relation(fields: [address_id], references: [id])
+
+  total_price  Float
+  sale_date    DateTime
+  status       String   @default("pending")
+  payment_type String
+
   sale_product Sale_Product[]
-  payment_sale Payment_Sale[]
 }
