@@ -1,7 +1,6 @@
 import {
   ArrayNotEmpty,
   IsArray,
-  IsDate,
   IsNotEmpty,
   IsNumber,
   IsString,
@@ -16,15 +15,11 @@ export class CreateSaleDto extends Sale {
 
   @IsNumber()
   @IsNotEmpty()
-  adrress_id: number;
+  address_id: number;
 
   @IsNumber()
   @IsNotEmpty()
   total_price: number;
-
-  @IsDate()
-  @IsNotEmpty()
-  sale_date: Date;
 
   @IsString()
   status: string;

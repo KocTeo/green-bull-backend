@@ -1,15 +1,16 @@
 import {
-  Controller,
-  Get,
-  Post,
   Body,
-  Patch,
-  Param,
+  Controller,
   Delete,
+  Get,
+  Param,
+  Patch,
+  Post,
+  Request,
 } from '@nestjs/common';
-import { SaleService } from './sale.service';
 import { CreateSaleDto } from './dto/create-sale.dto';
 import { UpdateSaleDto } from './dto/update-sale.dto';
+import { SaleService } from './sale.service';
 
 @Controller('sale')
 export class SaleController {
@@ -21,8 +22,8 @@ export class SaleController {
   }
 
   @Get()
-  findAll() {
-    return this.saleService.findAll();
+  findAll(@Request() req) {
+    return this.saleService.findAll(req.user);
   }
 
   @Get(':id')
